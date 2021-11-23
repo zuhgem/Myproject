@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_inherit_pos_order">
+			<field name="name">pos order</field>
+			<field name="model">pos.order</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+			<field name="arch" type="xml">
+				<button name="refund" position="after">
+					<button string="sale order" name="action_sale_order" class="oe_highlight" type="object" states="paid,post"/>
+                </button>
+				<field name="company_id" position="after">
+					<field name="ref"/>
+				</field>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="view_inherit_Sale_Order">
+			<field name="name">Sale Order pos</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<field name="user_id" position="after">
+					<field name="pos_session"/>
+				</field>
+				<button name="action_confirm" position="after">
+					<button string="Pay at the Counter" type="object" name="action_pos" class="btn-primary"
+							/>
+				</button>
+			</field>
+		</record>
+		</data>
+</odoo>

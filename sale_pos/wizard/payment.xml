@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="Payment_wizard_form" model="ir.ui.view">
+        <field name="name">payment</field>
+        <field name="model">payment_pos_wizard</field>
+        <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                               <field name="payment_method_id"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                                <field name="paid"/>
+                                <field name="remaining"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_payment" string="Make Payment" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Cancel" class="btn-secondary"/>
+                    </footer>
+                </form>
+        </field>
+        </record>
+
+        <record id="action_payment" model="ir.actions.act_window">
+            <field name="name">Payment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payment_pos_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="Payment_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
