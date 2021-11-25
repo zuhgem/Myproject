@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_inherit_Sale_Order_milestone">
+			<field name="name">Sale Order pos</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+				<data>
+                    <xpath expr="//field[@name='price_unit']" position="after">
+                        <field name="milestone"/>
+                    </xpath>
+                    <xpath expr="//tree/field[@name='price_unit']" position="after">
+                        <field name="milestone"/>
+                    </xpath>
+                </data>
+                <button name="action_confirm" position="after">
+                    <button name="action_create_project" type="object" string="Create Project" class="btn-primary"/>
+                </button>
+			</field>
+		</record>
+    </data>
+</odoo>
