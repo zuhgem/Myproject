@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_commission_pdf">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="oe_structure"/>
+                <div class="text-center">
+                    <h2>COMMISSION PLAN REPORT</h2>
+                </div><br/>
+                <table>
+                    <t t-if="form_data.get('from_date')">
+                        <tr>
+                            <td>From Date</td>
+                            <td>:</td>
+                            <td>
+                                <t t-esc="form_data['from_date']"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="form_data.get('to_date')">
+                        <tr>
+                            <td>To Date</td>
+                            <td>:</td>
+                            <td>
+                                <t t-esc="form_data['to_date']"/>
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="form_data.get('team_ids')">
+                        <tr>
+                            <td>Sales team</td>
+                            <td>:</td>
+                            <td>
+                                <t t-foreach="team_name" t-as="line">
+                                    <t t-esc="line"/>
+                                    <t>,</t>
+                                </t>
+
+<!--                                <t t-esc="team_name"/>-->
+                            </td>
+                        </tr>
+                    </t>
+                    <t t-if="form_data.get('user_ids')">
+                        <tr>
+                            <td>salesperson</td>
+                            <td>:</td>
+                            <td>
+                                <t t-foreach="salesperson_name" t-as="line">
+                                    <t t-esc="line"/>
+                                    <t>,</t>
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+
+                </table>
+                <br/>
+                <table class="table tale-bordered mt32">
+                    <thead>
+                        <tr>
+                            <th name="th_sequence" class="text-left">
+                                <span>Sequence</span>
+                            </th>
+                            <th name="th_name" class="text-left">
+                                <span>Name</span>
+                            </th>
+                            <t t-if="len(form_data.get('team_ids')) > 1">
+                                <th name="th_team" class="text-left">
+                                    <span>Sales Team</span>
+                                </th>
+                            </t>
+                            <t t-if="len(form_data.get('user_ids')) > 1">
+                                <th name="th_person" class="text-left">
+                                    <span>Salesperson</span>
+                                </th>
+                            </t>
+                            <th name="th_revenue" class="text_left">
+                                <span>Revenue</span>
+                            </th>
+                            <th name="th_revenue" class="text_left">
+                                <span>Total</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="commission" t-as="line">
+                        <tr>
+                            <td>
+                                <span t-esc="line['sequence']"/>
+                            </td>
+                            <td>
+                                <span t-esc="line['name']"/>
+                            </td>
+                            <t t-if="len(form_data.get('team_ids')) > 1">
+                                <td>
+                                    <span t-esc="line['team_id'][1]"/>
+                                </td>
+                            </t>
+                            <t t-if="len(form_data.get('user_ids')) > 1">
+                                <td>
+                                    <span t-esc="line['user_id'][1]"/>
+                                </td>
+                            </t>
+                            <td>
+                                <span t-esc="line['revenue']"/>
+                            </td>
+                            <td>
+                                <span t-esc="line['total']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

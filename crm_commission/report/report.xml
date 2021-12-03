@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="report_commission_xlsx" model="ir.actions.report">
+            <field name="name">Commission Excel Report</field>
+            <field name="model">commission_wizard</field>
+            <field name="report_type">xlsx</field>
+            <field name="report_name">crm_commission.report_commission_xlsx</field>
+            <field name="report_file">crm_commission.report_commission_xlsx</field>
+            <field name="binding_type">report</field>
+        </record>
+        <record id="action_report_commission_pdf" model="ir.actions.report">
+            <field name="name">Commission PDF Report</field>
+            <field name="model">commission_wizard</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">crm_commission.report_commission_pdf</field>
+            <field name="report_file">crm_commission.report_commission_pdf</field>
+            <field name="binding_model_id" ref="model_commission_wizard"/>
+            <field name="binding_type">report</field>
+        </record>
+
+    </data>
+</odoo>

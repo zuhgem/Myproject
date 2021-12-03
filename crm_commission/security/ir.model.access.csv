@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+commission,commission,model_crm_commission,,1,1,1,1,
+product_line,product_line,model_product_lines,,1,1,1,1
+commission_wizard,commission_wizard,model_commission_wizard,,1,1,1,1

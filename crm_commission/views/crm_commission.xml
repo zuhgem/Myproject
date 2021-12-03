@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="crm_commission" model="ir.actions.act_window">
+        <field name="name">Commission</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">crm.commission</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+        <record id="crm_commission_tree" model="ir.ui.view">
+        <field name="name">commission tree</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+
+            <tree>
+                <header>
+                    <button name="%(crm_commission.commission_wizard)d" string="Print" class="oe_highlight" type="action"/>
+                </header>
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="user_id"/>
+                <field name="team_id"/>
+            </tree>
+
+        </field>
+    </record>
+        <record id="crm_commission_form" model="ir.ui.view">
+        <field name="name">commission_form</field>
+        <field name="model">crm.commission</field>
+        <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <h1>
+                                <field name="sequence"/>
+                            </h1>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="active"/>
+                                <field name="type"/>
+                                <field name="team_id"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                                <field name="from_amount"/>
+                                <field name="to_amount"/>
+                            </group>
+
+                        </group>
+                        <field name="line_ids" attrs="{'invisible': [('type','!=','product')]}">
+                            <tree editable="button">
+                                <field name="product_id"/>
+                                <field name="categ_id"/>
+                                <field name="rate"/>
+                                <field name="commission"/>
+                                <field name="sub"/>
+                            </tree>
+                        </field>
+                        <group attrs="{'invisible': [('type','!=','revenue')]}">
+                            <group>
+                            <field name="total_sold"/>
+                            <field name="commission"/>
+                            </group>
+                            <group></group>
+                        </group>
+                        <group>
+                            <field name="total"/>
+                            <field name="revenue"/>
+                        </group>
+                    </sheet>
+                </form>
+        </field>
+    </record>
+        <menuitem id="commission" name="Commission Plan" parent="crm.crm_menu_root" sequence="4" action="crm_commission"/>
+<!--        <menuitem id="commission_wizard" name="Commission Plan Report" parent="crm.crm_menu_root" sequence="4" action="commission_wizard"/>-->
+
+<!--        <record id="report_commission_xlsx" model="ir.actions.report">-->
+<!--            <field name="name">Commission Excel Report</field>-->
+<!--            <field name="model">commission_wizard</field>-->
+<!--            <field name="report_type">xlsx</field>-->
+<!--            <field name="report_name">crm_commission.report_commission_xlsx</field>-->
+<!--            <field name="report_file">crm_commission.report_commission_xlsx</field>-->
+<!--            <field name="binding_type">report</field>-->
+<!--        </record>-->
+    </data>
+</odoo>
