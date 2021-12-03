@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="import_wizard_form" model="ir.ui.view">
+            <field name="name">Import wizard</field>
+            <field name="model">import_wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="file_path"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_import" string="Import Data" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Cancel" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <act_window id="import_wizard"
+                    name="Report"
+                    res_model="import_wizard"
+                    view_mode="form"
+                    view_id="import_wizard_form"
+                    target="new"/>
+    </data>
+</odoo>
