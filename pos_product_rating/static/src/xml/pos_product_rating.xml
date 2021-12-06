@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <template id="template" xml:space="preserve">
+        <t t-name="ProductItem" t-inherit="point_of_sale.ProductItem"
+           t-inherit-mode="extension" owl="1">
+<!--            <xpath expr="//div[hasclass('product-name')]" position="inside">-->
+<!--                <t t-if="props.product.rating">-->
+<!--                    <span>(</span>-->
+<!--                    <span>-->
+<!--                    <t t-esc="props.product.rating"/></span>-->
+<!--                </t>-->
+<!--            </xpath>-->
+            <xpath expr="//span[hasclass('price-tag')]" position="before">
+                <t t-if="props.product.rating">
+                    <span style="position: absolute; top: 2px;
+                    left: 2px; vertical-align: top; line-height: 12px;
+                    color:white; background: #660066;
+                    padding: 3px 5px; border-radius: 2px">
+                    <t t-esc="props.product.rating"/></span>
+                </t>
+
+            </xpath>
+        </t>
+    </template>

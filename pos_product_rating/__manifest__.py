@@ -1,0 +1,16 @@
+{
+    'name': 'Product Rating POS',
+    'version': '14.0.1.0',
+    'summery': 'product rating in pos',
+    'depends': ['product', 'point_of_sale'],
+    'data': ['views/product_rating.xml',
+             'views/assets.xml'],
+    'demo': [],
+    'qweb': ['static/src/xml/pos_product_rating.xml',
+             'static/src/xml/pos_rating_receipt.xml',
+             'static/src/xml/pos_rating_orderline.xml'],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}
