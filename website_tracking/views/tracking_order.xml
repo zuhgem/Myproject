@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="tracking_order" name="Tracking page">
+            <t t-call="website.layout">
+                <div id="warp">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <br/><br/>
+                            <center><h3>Tracking Order</h3></center>
+                            <br/><br/>
+                            <form role="form" action="/tracked-order" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <label for="order" class="control-label">Order Sequence</label>
+                                <input type="order" name="order" id="order" class="form-control"
+                                       required="True" style="width=30px;"/>
+                                <center>
+                                    <br/><br/>
+                                    <div class="clearfix oe_login_buttons">
+                                  <button type="submit" class="btn btn-primary">Track your order</button>
+                                </div>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+        <record id="track_done" model="website.page">
+            <field name="name">track_done</field>
+            <field name="type">qweb</field>
+            <field name="url">/tracked-order</field>
+            <field name="website_published">True</field>
+            <field name="key">website_tracking.track_done</field>
+            <field name="arch" type="xml">
+                <t name="tracked">
+                    <t t-call="website.layout">
+                        <div id="warp">
+                            <div class="oe_structure">
+                                <div class="container">
+                                    <center>
+                                        <br/><br/>
+                                        <center><h3>Your Order</h3></center>
+                                        <br/><br/>
+                                        <table style="border-collapse: collapse; width: 60%;
+                                         padding: 8px;">
+                                            <tr style="background-color: #3aadaa;">
+                                                <th class="text-left">
+                                                    <span> Date </span>
+                                                </th>
+                                                <th class="text-left">
+                                                    <span>  From </span>
+                                                </th>
+                                                <th class="text-left">
+                                                    <span>  To </span>
+                                                </th>
+                                            </tr>
+                                            <t t-foreach="transfer" t-as="line">
+                                                <tr style="background-color: #F6F6F6;">
+                                                    <td>
+                                                        <span t-esc="line['date']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="line['to_']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="line['from_']"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </table>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+            </field>
+        </record>
+    </data>
+</odoo>

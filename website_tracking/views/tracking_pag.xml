@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="tracking_page" name="Tracking page">
+            <t t-call="website.layout">
+                <div id="warp">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <br/><br/>
+                            <center><h3>Tracking Order</h3></center>
+                            <br/><br/><br/>
+                            <form role="form" action="/tracked" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <center>
+                                <table style="width:60%">
+                                    <tr>
+                                        <th>
+                                            <label for="from_date" class="control-label">From Date</label>
+                                        </th>
+                                        <th/>
+                                        <th>
+                                            <label for="To_date" class="control-label">To Date</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" name="from_date" id="from_date" class="form-control"
+                                            required="True"/>
+                                        </td>
+                                        <td/>
+                                        <td>
+                                            <input type="date" name="to_date" id="to_date" class="form-control"
+                                            required="True"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                                    <br/><br/>
+                                <div class="clearfix oe_login_buttons">
+                                  <button type="submit" class="btn btn-primary">Track your order</button>
+                                </div>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <record id="tracking_done" model="website.page">
+            <field name="name">track</field>
+            <field name="type">qweb</field>
+            <field name="url">/tracked</field>
+            <field name="website_published">True</field>
+            <field name="key">website_tracking.tracking_done</field>
+            <field name="arch" type="xml">
+                <t name="tracked">
+                    <t t-call="website.layout">
+                        <div id="warp">
+                            <div class="oe_structure">
+                                <div class="container">
+                                    <center>
+                                        <br/><br/>
+                                        <center><h3>Your Order</h3></center>
+                                        <br/><br/>
+                                        <table style="border-collapse: collapse; width: 60%;
+                                         padding: 8px;">
+                                            <tr style="background-color: #3aadaa;">
+                                                <th class="text-left">
+                                                    <span> Sequence </span>
+                                                </th>
+                                                <th class="text-left">
+                                                    <span> Ordered Date </span>
+                                                </th>
+                                                <th class="text-left">
+                                                    <span> Delivered Date </span>
+                                                </th>
+                                                <th class="text-left">
+                                                    <span> Total Amount </span>
+                                                </th>
+                                            </tr>
+                                            <t t-foreach="order" t-as="line">
+                                                <tr style="background-color: #F6F6F6;">
+                                                    <td>
+                                                        <span t-esc="line['name']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="line['date_order']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="line['expected_date']"/>
+                                                    </td>
+                                                    <td>
+                                                        <span t-esc="line['amount_total']"/>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </table>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+
+            </field>
+        </record>
+    </data>
+</odoo>

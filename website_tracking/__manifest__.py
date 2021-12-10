@@ -1,0 +1,17 @@
+{
+    'name': 'Order Tracking in Website',
+    'version': '14.0.1.0',
+    'summery': 'product rating in pos',
+    'depends': ['base', 'website', 'stock'],
+    'data': ['security/ir.model.access.csv',
+             'views/tracking_menu.xml',
+             'views/tracking_pag.xml',
+             'views/tracking_order.xml',
+             'views/transfers.xml'],
+    'demo': [],
+    'qweb': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_inherit_stock_picking">
+			<field name="name">transfers</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_form"/>
+			<field name="arch" type="xml">
+                <xpath expr="//page['extra']" position="before">
+                    <page string='Transfers' name="transfer">
+                        <field name="transfer_ids">
+                            <tree editable="button">
+                                <field name="date"/>
+                                <field name="from_"/>
+                                <field name="to_"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
