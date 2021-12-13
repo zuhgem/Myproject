@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="mrp_production_smart_button" model="ir.ui.view">
+            <field name="name">mrp.production.buttons</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+<!--                    <button class="oe_stat_button" type="object"-->
+<!--                        name ='get_bom' icon="fa-flask">-->
+<!--                    </button>-->
+                    <button name="%(mrp.action_report_mrp_bom)d" type="action"
+                                class="oe_stat_button" icon="fa-bars" string="Structure Cost"/>
+
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

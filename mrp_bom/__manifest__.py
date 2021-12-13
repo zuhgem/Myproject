@@ -1,0 +1,15 @@
+{
+    'name': 'BOM Structure in MO',
+    'version': '14.0.1.0',
+    'category': 'Manufacturing/Manufacturing',
+    'sequence': 15,
+    'summary': '',
+    'description': "event management module",
+    'depends': ['mrp'],
+    'data': ['views/mrp_bom_utton.xml'],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

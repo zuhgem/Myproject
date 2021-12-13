@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_dynamic_snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <div data-js="ProductsOptions" data-selector=".products" data-no-preview="true">
+                <we-button data-log-stuff="hello">Log stuff</we-button>
+                <we-title class="mt-2">Number of products</we-title>
+                <we-select string="⌙ Normal devices" data-attribute-name="numberOfElements" data-no-preview="true">
+                    <we-button data-select-data-attribute="1">1</we-button>
+                    <we-button data-select-data-attribute="2">2</we-button>
+                    <we-button data-select-data-attribute="3">3</we-button>
+                    <we-button data-select-data-attribute="4">4</we-button>
+                    <we-button data-select-data-attribute="5">5</we-button>
+                </we-select>
+                <we-select string="⌙ Small devices" data-attribute-name="numberOfElementsSmallDevices" data-no-preview="true">
+                    <we-button data-select-data-attribute="1">1</we-button>
+                    <we-button data-select-data-attribute="2">2</we-button>
+                    <we-button data-select-data-attribute="3">3</we-button>
+                </we-select>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="snippets" inherit_id="website.snippets" name="custom snippets">
+        <xpath expr="//div[@id='snippet_effect']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="website_snippets.products"/>
+        </xpath>
+    </template>
+
+    <template id="assets_snippet_products_js_000" inherit_id="website.assets_frontend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/website_snippets/static/src/snippets/sold_products/000.js"/>
+            <script type="text/javascript" src="/website_snippets/static/src/snippets/view_product/000.js"/>
+        </xpath>
+    </template>
+
+<!--    <template id="assets_snippet_products_options" inherit_id="website.assets_editor">-->
+<!--        <xpath expr="//script[last()]" position="after">-->
+<!--            <script type="text/javascript" src="/website_snippets/static/src/snippets/sold_products/options.js"/>-->
+<!--&lt;!&ndash;            <script type="text/javascript" src="/website_snippets/static/src/snippets/view_product/options.js"/>&ndash;&gt;-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>
